@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TP3_mobile</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prenom</string>
+    <string name="naissance">Naissance</string>
+    <string name="telephone">Telephone</string>
+    <string name="mail">Mail</string>
+    <string name="sport">Sport</string>
+    <string name="lecture">Lecture</string>
+    <string name="programmation">Programmation</string>
+    <string name="musique">Musique</string>
+    <string name="soumettre">Soumettre</string>
+</resources>

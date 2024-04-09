@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<title>Hello FactController!</title>
+
+{% block body %}
+<style>
+    .example-wrapper { 
+        margin: 1em auto; 
+        max-width: 800px; 
+        width: 95%; 
+        font: 18px/1.5 sans-serif;
+    }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Calcul de n! 😊</h1>
+
+    <form method="GET">
+        <label for="fibonacci">n : </label>
+        <input type="text" name="fibonacci" placeholder="Entrez un nombre">
+        <input type="submit" value="Calculer">
+    </form>
+
+    <h1>Calcul de (n p) 😒</h1>
+    <form method="GET">
+        <label for="n">n :</label>
+        <input type="text" name="n" placeholder="Entrez un nombre" required>
+        </br>
+        <label for="p">p :</label>
+        <input type="text" name="p" placeholder="Entrez un nombre" required>
+        <input type="submit" value="Calculer">
+    </form>
+    <h1>Resultats ✌️</h1>
+    {{ value }}
+    <ul>
+    </ul>
+</div>
+{% endblock %}

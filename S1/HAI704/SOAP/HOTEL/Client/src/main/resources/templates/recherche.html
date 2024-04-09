@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title th:text="'Agence d\'hotel - ' + ${agence.nomAgence}"></title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<div class="header">
+    <div class="search-bar">
+        <form action="/recherche" method="GET">
+            <input type="number" name="etoiles" min="1" max="5" placeholder="Nombre d'étoiles">
+            <select name="ville">
+                <option th:each="ville, iterStat : ${agence.listeHotels}" th:value="${ville.getKey().getAdresse().ville}" th:text="${ville.getKey().getAdresse().ville}"></option>
+            </select>
+            <input type="number" name="nombrelits" min="1" placeholder="Nombre de lits">
+            <input type="date" name="debut" placeholder="Arrivée">
+            <input type="date" name="fin" placeholder="Retour">
+            <button type="submit">Rechercher</button>
+        </form>
+    </div>
+</div>
+<div class="hotels-list">
+    <div class="hotel" th:each="hotel, iterStat : ${listeHotelsDisponibles}">
+        <a th:href="@{'/hotel?nom=' + ${hotel.nom}}">
+            <div class="hotel-image">
+                <img src="hotel1.jpg" alt="Hotel 1">
+                <button class="favorite-button"></button>
+            </div>
+            <h2 th:text="${hotel.nom}"></h2>
+            <p class="hotel-description">Description de l'hôtel...</p>
+            <p class="hotel-address" th:text="${hotel.adresse.ville}"></p>
+            <p class="hotel-phone" th:text="'Etoiles : ' + ${hotel.etoiles}"></p>
+        </a>
+
+    </div>
+</div>
+</body>
+</html>

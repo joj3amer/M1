@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des chambres d'hôtel</title>
+    <style>
+        /* Styles modernes */
+        * {
+            box-sizing: border-box;
+        }
+
+        .inline{
+            display: inline;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .room-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+            gap: 20px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .room-item {
+            border: 1px solid #ddd;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-item h2 {
+            font-size: 20px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .room-item p {
+            font-size: 14px;
+            color: #777;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${nom}"></h1>
+    <ul class="room-list">
+        <li class="room-item" th:each="chambre, iterStat : ${agence.getHotelByName(nom).getChambres()}">
+
+            <h2 class="inline">Chambre</h2>
+            <p th:text="${chambre.getLits()} + ' personnes'" class="inline"></p><br>
+            <div class="inline">
+                <p th:text="'Prix : ' + ${chambre.getPrix()} + ' €'"></p>
+                <form action="/reservation" method="GET"><button name="numeroChambre" type="submit" class="reserve-button" th:value="${chambre.numero}">Réserver</button></form>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
